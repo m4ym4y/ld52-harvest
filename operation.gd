@@ -20,5 +20,8 @@ func _input(event):
 				$BodyMask.emit_signal('cut', target)
 				get_node("Tool/CPUParticles2D").emitting = true
 				$ProgressBar.value -= 0.0002 * event.speed.length()
-		if event.button_mask == 0:
+		elif event.button_mask == 0:
 			get_node("Tool/CPUParticles2D").emitting = false
+	elif event is InputEventMouseButton:
+		if event.button_mask & 2:
+			print("is uncovered?", $BodyMask.is_uncovered(get_node("Organs/Heart")))
