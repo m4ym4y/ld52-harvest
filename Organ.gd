@@ -29,4 +29,5 @@ func in_hitbox(target):
 
 func fall_out():
 	light_mask = 1
+	z_index = 9
 	falling = true

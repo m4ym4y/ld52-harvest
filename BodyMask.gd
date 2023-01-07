@@ -100,4 +100,4 @@ func is_uncovered(organ):
         matches += 1
 
   var percent = float(matches) / float(total)
-  return percent > 0.999
+  return percent > 0.998

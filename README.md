@@ -6,7 +6,7 @@ scored on how little damage you do to the body.
 ## TODOs
 
 - [ ] Dialogue scene (init with list of dialogue lines and the character/background)
-- [ ] Show goal organ in operation scene
+- [x] Show goal organ in operation scene
 - [ ] Game over logic in the operation scene (retry or main menu)
 - [ ] Instruction scene and instruction button
 - [ ] Game controller to string together scenes
@@ -24,3 +24,5 @@ scored on how little damage you do to the body.
 - [ ] other obstacles in the operation scene?
 - [ ] grade/score the player on how little damage they cause
 - [ ] multiple different bodies, to make it seem less the same
+- [ ] custom drawn healthbar
+- [ ] levels with multiple of the same organ

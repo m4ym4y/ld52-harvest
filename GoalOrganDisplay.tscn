@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GoalOrganDisplay.gd" type="Script" id=1]
+[ext_resource path="res://Organ.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/goal_check.png" type="Texture" id=3]
+[ext_resource path="res://art/goal_circle.png" type="Texture" id=4]
+
+[node name="GoalOrganDisplay" type="Node2D"]
+script = ExtResource( 1 )
+organ_scene = ExtResource( 2 )
+
+[node name="GoalCircle" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Organ" parent="." instance=ExtResource( 2 )]
+
+[node name="GoalCheck" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )

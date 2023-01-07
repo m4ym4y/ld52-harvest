@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_image.png-766335652dc2c2de5b8cec86a2845a37.stex"
+path="res://.import/goal_check.png-c5f3fc5a05e79cd5dfcc23db556db680.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_image.png"
-dest_files=[ "res://.import/test_image.png-766335652dc2c2de5b8cec86a2845a37.stex" ]
+source_file="res://art/goal_check.png"
+dest_files=[ "res://.import/goal_check.png-c5f3fc5a05e79cd5dfcc23db556db680.stex" ]
 
 [params]
 

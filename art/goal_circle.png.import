@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_image_masked.png-a484b5ace707622cfc7ebea489a52c28.stex"
+path="res://.import/goal_circle.png-c2ae4b0a6aa921e9ff6331f404643b7a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_image_masked.png"
-dest_files=[ "res://.import/test_image_masked.png-a484b5ace707622cfc7ebea489a52c28.stex" ]
+source_file="res://art/goal_circle.png"
+dest_files=[ "res://.import/goal_circle.png-c2ae4b0a6aa921e9ff6331f404643b7a.stex" ]
 
 [params]
 
