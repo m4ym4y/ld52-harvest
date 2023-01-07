@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="harvest"
-run/main_scene="res://operation.tscn"
+run/main_scene="res://Operation.tscn"
 config/icon="res://icon.png"
 
 [display]

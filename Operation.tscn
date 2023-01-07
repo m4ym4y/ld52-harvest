@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Tool.tscn" type="PackedScene" id=1]
+[ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Operation.gd" type="Script" id=3]
+[ext_resource path="res://art/table.png" type="Texture" id=4]
+[ext_resource path="res://Organ.tscn" type="PackedScene" id=5]
+[ext_resource path="res://BodyMask.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/torso_outside.png" type="Texture" id=7]
+[ext_resource path="res://art/torso_inside.png" type="Texture" id=8]
+[ext_resource path="res://GoalOrganDisplay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://art/complete_dialog.png" type="Texture" id=10]
+[ext_resource path="res://art/failure_dialog.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.737255, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 56
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="Operation" type="Node2D"]
+script = ExtResource( 3 )
+organ_scene = ExtResource( 5 )
+organ_goal_scene = ExtResource( 9 )
+
+[node name="Table" type="Sprite" parent="."]
+position = Vector2( 503.21, 258.625 )
+scale = Vector2( 0.631999, 0.631999 )
+texture = ExtResource( 4 )
+
+[node name="TorsoOutside" type="Sprite" parent="."]
+position = Vector2( 520, 350 )
+scale = Vector2( 0.768098, 0.768098 )
+texture = ExtResource( 7 )
+
+[node name="TorsoInside" type="Sprite" parent="."]
+light_mask = 2
+position = Vector2( 520, 350 )
+scale = Vector2( 0.768, 0.768 )
+texture = ExtResource( 8 )
+
+[node name="TorsoBounds" type="Polygon2D" parent="."]
+color = Color( 1, 1, 0.941176, 0 )
+polygon = PoolVector2Array( 436, 63, 323, 108, 269, 265, 211, 545, 199, 585, 218, 595, 240, 588, 255, 480, 300, 323, 332, 210, 354, 407, 322, 514, 590, 526, 582, 414, 607, 270, 623, 224, 636, 246, 644, 306, 664, 445, 672, 552, 691, 629, 705, 690, 737, 673, 713, 606, 715, 441, 709, 370, 684, 209, 668, 138, 626, 122, 558, 73 )
+
+[node name="GoalOrganDisplay" parent="." instance=ExtResource( 9 )]
+position = Vector2( 933, 505 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="GoalOrgans" type="Node2D" parent="."]
+
+[node name="Organs" type="Node2D" parent="."]
+light_mask = 3
+
+[node name="Organ" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 468, 466 )
+animation = "bladder"
+
+[node name="Organ2" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 555, 397 )
+animation = "gallbladder"
+
+[node name="Organ3" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 544, 196 )
+animation = "heart"
+
+[node name="Organ4" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 526, 338 )
+animation = "liver"
+
+[node name="Organ5" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 403, 338 )
+animation = "kidney"
+
+[node name="Organ6" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 469, 237 )
+animation = "spleen"
+
+[node name="Organ7" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 413, 160 )
+
+[node name="Tool" parent="." instance=ExtResource( 1 )]
+position = Vector2( 550, 226 )
+scale = Vector2( 0.358153, 0.358152 )
+z_index = 100
+
+[node name="BodyMask" parent="." instance=ExtResource( 6 )]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 137.0
+margin_top = 545.0
+margin_right = 821.0
+margin_bottom = 593.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/fg = SubResource( 1 )
+value = 100.0
+
+[node name="CompleteDialog" type="Sprite" parent="."]
+visible = false
+position = Vector2( 479, 279 )
+z_index = 8
+texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="CompleteDialog"]
+margin_left = -123.0
+margin_top = -62.0
+margin_right = 95.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Complete!"
+
+[node name="Label2" type="Label" parent="CompleteDialog"]
+margin_left = -108.0
+margin_top = -1.0
+margin_right = 78.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Left click to continue..."
+
+[node name="FailureDialog" type="Sprite" parent="."]
+visible = false
+position = Vector2( 477, 280 )
+z_index = 8
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="FailureDialog"]
+margin_left = -105.0
+margin_top = -63.0
+margin_right = 105.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Failure!"
+
+[node name="Label2" type="Label" parent="FailureDialog"]
+margin_left = -108.0
+margin_top = -1.0
+margin_right = 78.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Left click to retry..."

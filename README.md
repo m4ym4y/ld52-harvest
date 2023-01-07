@@ -9,7 +9,7 @@ scored on how little damage you do to the body.
 - [x] Show goal organ in operation scene
 - [ ] Game over logic in the operation scene (retry or main menu)
 - [ ] Instruction scene and instruction button
-- [ ] Game controller to string together scenes
+- [x] Game controller to string together scenes
 - [ ] Music
 - [ ] Sound effects
 - [ ] Main menu scene

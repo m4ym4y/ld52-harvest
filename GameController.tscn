@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameController.gd" type="Script" id=1]
+[ext_resource path="res://Dialogue.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Operation.tscn" type="PackedScene" id=3]
+
+[node name="GameController" type="Node2D"]
+script = ExtResource( 1 )
+operation_scene = ExtResource( 3 )
+dialogue_scene = ExtResource( 2 )

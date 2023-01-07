@@ -3,12 +3,15 @@ extends Node2D
 export (PackedScene) var organ_scene
 export (PackedScene) var organ_goal_scene
 
+signal complete
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 var tool_offset = Vector2(-35, 35)
 var did_cut = false
+var done = false
 
 var goal_organs = []
 var goal_organ_x = 930
@@ -16,13 +19,14 @@ var goal_organ_y = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	init([
-		{ "type": "heart", "position": Vector2(544, 196) },
-		{ "type": "liver", "position": Vector2(526, 338) }
-	], [
-		"heart",
-		"liver"
-	])
+	if not goal_organs.size():
+		init([
+			{ "type": "heart", "position": Vector2(544, 196) },
+			{ "type": "liver", "position": Vector2(526, 338) }
+		], [
+			"heart",
+			"liver"
+		])
 	pass # Replace with function body.
 
 func init(organ_positions, goals):
@@ -58,6 +62,9 @@ func complete_organ(organ):
 
 	if goal_organs.size() == 0:
 		print("stage complete!!")
+		$CompleteDialog.visible = true
+		yield(get_tree().create_timer(1.5), "timeout")
+		done = true
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -70,7 +77,9 @@ func _input(event):
 		elif event.button_mask == 0:
 			get_node("Tool/CPUParticles2D").emitting = false
 	elif event is InputEventMouseButton:
-		if event.button_mask & 2:
+		if event.button_mask & 1 and done:
+			emit_signal("complete")
+		if event.button_mask & 2 and not done:
 			var target = event.position + tool_offset
 			for organ in $Organs.get_children():
 				if organ.in_hitbox(target):

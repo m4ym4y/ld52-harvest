@@ -14,29 +14,29 @@ var time_per_char = 0.05
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	init([
-		{ "text": "Hello, Regular-Sized Tony. I have a job for you...",
-			"boss": true,
-			"protag": false,
-			"bg": true
-		},
-		{ "text": "Oh yeah? Tell me more.",
-			"boss": false,
-			"protag": true,
-			"bg": true
-		},
-		{ "text": "s SALDSJ fslkdf jlksfjlkDSJKLF LJSDLFJ",
-			"boss": false,
-			"protag": true,
-			"bg": true
-		},
-		{ "text": "SKF JSDKLF JLSDFJLK SD",
-			"boss": true,
-			"protag": false,
-			"bg": true
-		},
-	])
-	pass # Replace with function body.
+	if not lines:
+		init([
+			{ "text": "Hello, Regular-Sized Tony. I have a job for you...",
+				"boss": true,
+				"protag": false,
+				"bg": true
+			},
+			{ "text": "Oh yeah? Tell me more.",
+				"boss": false,
+				"protag": true,
+				"bg": true
+			},
+			{ "text": "s SALDSJ fslkdf jlksfjlkDSJKLF LJSDLFJ",
+				"boss": false,
+				"protag": true,
+				"bg": true
+			},
+			{ "text": "SKF JSDKLF JLSDFJLK SD",
+				"boss": true,
+				"protag": false,
+				"bg": true
+			},
+		])
 
 func init(_lines):
 	lines = _lines
@@ -59,11 +59,14 @@ func render_current_line():
 	$ProtagonistPortrait.light_mask = 1 if line.protag else 4
 	$DialogueBackground.visible = line.bg
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseButton and not complete:
-		if event.button_mask & 1 and done_typing:
-			current_line += 1
-			render_current_line()
+		if event.button_mask & 1:
+			if done_typing:
+				current_line += 1
+				render_current_line()
+			else:
+				$Label.text = lines[current_line].text
 
 func _process(delta):
 	if complete:
@@ -73,7 +76,6 @@ func _process(delta):
 	var text = lines[current_line].text
 
 	if text != $Label.text:
-		print("setting text")
 		$Label.text = text.substr(0, min(floor(elapsed / time_per_char),text.length()))
 	else:
 		$Continue.visible = true
