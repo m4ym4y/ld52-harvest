@@ -54,17 +54,18 @@ func _on_BodyMask_cut(position):
     Vector2(position.x - CUT_SIZE / 2, position.y - CUT_SIZE / 2))
   refresh_texture()
 
-func is_uncovered(organ_sprite):
-  var organ_image : Image = organ_sprite.texture.get_data()
+func is_uncovered(organ):
+  var texture = organ.frames.get_frame(organ.animation, organ.frame)
+  var organ_image : Image = texture.get_data()
   var organ_base_size = organ_image.get_size()
 
   var scaled_organ_image = Image.new()
   scaled_organ_image.copy_from(organ_image)
   scaled_organ_image.resize(
-      int(organ_base_size.x * organ_sprite.scale.x),
-      int(organ_base_size.y * organ_sprite.scale.y))
+      int(organ_base_size.x * organ.scale.x),
+      int(organ_base_size.y * organ.scale.y))
 
-  var position = organ_sprite.position - (scaled_organ_image.get_size() / 2)
+  var position = organ.position - (scaled_organ_image.get_size() / 2)
 
   # put our organ image into an empty image at its position
   var test_image = Image.new()
@@ -99,5 +100,4 @@ func is_uncovered(organ_sprite):
         matches += 1
 
   var percent = float(matches) / float(total)
-  print('matches: ', percent)
   return percent > 0.999

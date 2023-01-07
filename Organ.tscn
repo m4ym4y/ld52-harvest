@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://art/kidney.png" type="Texture" id=1]
+[ext_resource path="res://art/gallbladder.png" type="Texture" id=2]
+[ext_resource path="res://art/heart.png" type="Texture" id=3]
+[ext_resource path="res://art/bladder.png" type="Texture" id=4]
+[ext_resource path="res://art/spleen.png" type="Texture" id=5]
+[ext_resource path="res://art/liver.png" type="Texture" id=6]
+[ext_resource path="res://Organ.gd" type="Script" id=7]
+[ext_resource path="res://art/mitochondria.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "bladder",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "gallbladder",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "heart",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "kidney",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "liver",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "mitochondria",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "spleen",
+"speed": 5.0
+} ]
+
+[node name="Organ" type="AnimatedSprite"]
+light_mask = 3
+position = Vector2( 0, -2 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 1 )
+animation = "mitochondria"
+script = ExtResource( 7 )
+
+[node name="spleen" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( -43.3333, -230, -110, -160, -146.667, -90, -140, -40, -103.333, 13.3333, -83.3333, 136.667, -36.6667, 190, 56.6667, 186.667, 126.667, 140, 136.667, 96.6667, 130, 76.6667, 140, 60, 120, 6.66667, 113.333, -46.6667, 90, -63.3333, 96.6667, -90, 36.6667, -166.667, -23.3333, -230 )
+
+[node name="liver" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 253.333, -230, 203.333, -116.667, 150, -30, 93.3333, 3.33333, 43.3333, 76.6667, -16.6667, 120, -60, 130, -103.333, 163.333, -150, 223.333, -200, 250, -196.667, 153.333, -216.667, 33.3333, -206.667, -70, -140, -146.667, -46.6667, -173.333, 30, -176.667, 100, -206.667, 190, -233.333, 246.667, -240 )
+
+[node name="kidney" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 0, -196.667, -40, -186.667, -80, -130, -120, -16.6667, -120, 40, -46.6667, 153.333, 43.3333, 203.333, 103.333, 180, 130, 123.333, 116.667, 93.3333, 63.3333, 50, 80, 0, 70, -26.6667, 43.3333, -50, 43.3333, -73.3333, 60, -90, 53.3333, -150, 13.3333, -193.333 )
+
+[node name="heart" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( -113.333, -180, -103.333, -133.333, -123.333, -76.6667, -116.667, -20, -146.667, 60, -143.333, 106.667, -70, 203.333, -10, 243.333, 30, 223.333, 56.6667, 183.333, 113.333, 126.667, 133.333, 76.6667, 130, 23.3333, 113.333, -16.6667, 153.333, -30, 140, -106.667, 103.333, -103.333, 96.6667, -113.333, 60, -100, 90, -123.333, 120, -140, 96.6667, -190, 60, -186.667, 46.6667, -166.667, 10, -196.667, 10, -233.333, -26.6667, -240, -36.6667, -223.333, -36.6667, -200, -56.6667, -213.333, -63.3333, -156.667, -93.3333, -193.333 )
+
+[node name="gallbladder" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 53.3333, -136.667, 36.6667, -83.3333, -10, -63.3333, -26.6667, -13.3333, -90, 23.3333, -103.333, 103.333, -63.3333, 130, 0, 130, 40, 76.6667, 73.3333, 123.333, 96.6667, 96.6667, 56.6667, 0, 90, -116.667 )
+
+[node name="bladder" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( -190, -213.333, -186.667, -173.333, -163.333, -123.333, -186.667, -33.3333, -126.667, 90, -33.3333, 126.667, -53.3333, 173.333, -80, 210, -60, 230, 23.3333, 140, 103.333, 73.3333, 140, -10, 140, -70, 180, -130, 193.333, -183.333, 186.667, -216.667, 153.333, -210, 150, -156.667, 123.333, -123.333, 86.6667, -176.667, -6.66667, -206.667, -73.3333, -200, -126.667, -166.667, -146.667, -183.333, -146.667, -206.667, -143.333, -220 )
+
+[node name="mitochondria" type="Polygon2D" parent="."]
+color = Color( 0.490196, 0.231373, 0.231373, 0 )
+polygon = PoolVector2Array( 106.667, -243.333, 30, -216.667, -43.3333, -106.667, -163.333, -23.3333, -203.333, 70, -203.333, 150, -156.667, 213.333, -103.333, 240, -43.3333, 233.333, 13.3333, 183.333, 36.6667, 103.333, 66.6667, 50, 96.6667, 13.3333, 143.333, -13.3333, 183.333, -53.3333, 206.667, -116.667, 193.333, -193.333, 140, -236.667 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
