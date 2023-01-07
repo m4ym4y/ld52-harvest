@@ -2,10 +2,14 @@ extends Node2D
 
 export (PackedScene) var operation_scene
 export (PackedScene) var dialogue_scene
+export (PackedScene) var menu_scene
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
+static func menu_spec():
+	return { "type": "menu" }
 
 static func organ_spec(type, x, y):
 	return { "type": type, "position": Vector2(x, y) }
@@ -30,6 +34,7 @@ static func line_spec(text, type):
 
 var current_level = 0
 var game_spec = [
+	menu_spec(),
 	dialogue_spec([
 		line_spec("Hello, Regular-sized Tony... I have a job for you.", L.BOSS),
 		line_spec("Who are you? Did the boss send you?", L.PROTAG),
@@ -63,18 +68,25 @@ func _on_level_complete(level):
 	current_level += 1
 	next_level()
 
+func _on_level_failure(level):
+	level.queue_free()
+	next_level()
+
 func next_level():
 	# TODO: have an ending scene instead
 	if current_level >= game_spec.size():
-		get_tree().quit()
-		return
+		current_level = 0
 
 	var level = game_spec[current_level]
 	var scene
+	
+	if level.type == "menu":
+		scene = menu_scene.instance()
 
 	if level.type == "operation":
 		scene = operation_scene.instance()
 		scene.init(level.organs, level.goal_organs)
+		scene.connect("failure", self, "_on_level_failed", [ scene ])
 
 	if level.type == "dialogue":
 		scene = dialogue_scene.instance()

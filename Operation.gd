@@ -12,6 +12,7 @@ signal complete
 var tool_offset = Vector2(-35, 35)
 var did_cut = false
 var done = false
+var failed = false
 
 var goal_organs = []
 var goal_organ_x = 930
@@ -63,22 +64,33 @@ func complete_organ(organ):
 	if goal_organs.size() == 0:
 		print("stage complete!!")
 		$CompleteDialog.visible = true
-		yield(get_tree().create_timer(1.5), "timeout")
 		done = true
+		yield(get_tree().create_timer(1.5), "timeout")
+
+func fail_stage():
+	done = true
+	failed = true
+	yield(get_tree().create_timer(0.5), "timeout")
+	$FailureDialog.visible = true
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not done:
 		if event.button_mask & 1:
 			var target = event.position + tool_offset
 			if Geometry.is_point_in_polygon(target, $TorsoBounds.polygon):
 				$BodyMask.emit_signal('cut', target)
 				get_node("Tool/CPUParticles2D").emitting = true
-				$ProgressBar.value -= 0.0002 * event.speed.length()
+				$Health.value -= 0.004 * event.speed.length()
+				if $Health.value == 0:
+					fail_stage()
 		elif event.button_mask == 0:
 			get_node("Tool/CPUParticles2D").emitting = false
 	elif event is InputEventMouseButton:
 		if event.button_mask & 1 and done:
-			emit_signal("complete")
+			if not failed:
+				emit_signal("complete")
+			else:
+				emit_signal("failed")
 		if event.button_mask & 2 and not done:
 			var target = event.position + tool_offset
 			for organ in $Organs.get_children():

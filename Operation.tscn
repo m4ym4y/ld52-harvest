@@ -101,7 +101,7 @@ z_index = 100
 
 [node name="BodyMask" parent="." instance=ExtResource( 6 )]
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Health" type="ProgressBar" parent="."]
 margin_left = 137.0
 margin_top = 545.0
 margin_right = 821.0

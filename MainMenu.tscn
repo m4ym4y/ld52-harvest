@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://art/menu_background.png" type="Texture" id=2]
+[ext_resource path="res://MainMenu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+outline_size = 6
+outline_color = Color( 0.419608, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="MenuBackground" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 42.0
+margin_top = 317.0
+margin_right = 552.0
+margin_bottom = 394.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 1 )
+text = "Click Here to Start Game"
+flat = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 71.0
+margin_top = 148.0
+margin_right = 626.0
+margin_bottom = 295.0
+custom_fonts/font = SubResource( 2 )
+text = "Organ Trail"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
