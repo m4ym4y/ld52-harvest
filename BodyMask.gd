@@ -80,8 +80,8 @@ func is_uncovered(organ):
   test_image.lock()
   test_image_masked.lock()
 
-  test_image.save_png('test_image.png')
-  test_image_masked.save_png('test_image_masked.png')
+  # test_image.save_png('test_image.png')
+  # test_image_masked.save_png('test_image_masked.png')
 
   var size = scaled_organ_image.get_size()
   var wh = size.x / 2
