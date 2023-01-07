@@ -5,7 +5,7 @@ scored on how little damage you do to the body.
 
 ## TODOs
 
-- [ ] Dialogue scene (init with list of dialogue lines and the character/background)
+- [x] Dialogue scene (init with list of dialogue lines and the character/background)
 - [x] Show goal organ in operation scene
 - [ ] Game over logic in the operation scene (retry or main menu)
 - [ ] Instruction scene and instruction button

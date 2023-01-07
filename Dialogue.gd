@@ -24,7 +24,17 @@ func _ready():
 			"boss": false,
 			"protag": true,
 			"bg": true
-		}
+		},
+		{ "text": "s SALDSJ fslkdf jlksfjlkDSJKLF LJSDLFJ",
+			"boss": false,
+			"protag": true,
+			"bg": true
+		},
+		{ "text": "SKF JSDKLF JLSDFJLK SD",
+			"boss": true,
+			"protag": false,
+			"bg": true
+		},
 	])
 	pass # Replace with function body.
 
@@ -43,9 +53,10 @@ func render_current_line():
 	elapsed = 0
 	done_typing = false
 
+	$Continue.visible = false
 	$Label.text = ""
-	$BossPortrait.visible = line.boss
-	$ProtagonistPortrait.visible = line.protag
+	$BossPortrait.light_mask = 1 if line.boss else 4
+	$ProtagonistPortrait.light_mask = 1 if line.protag else 4
 	$DialogueBackground.visible = line.bg
 
 func _unhandled_input(event):
@@ -65,4 +76,5 @@ func _process(delta):
 		print("setting text")
 		$Label.text = text.substr(0, min(floor(elapsed / time_per_char),text.length()))
 	else:
+		$Continue.visible = true
 		done_typing = true

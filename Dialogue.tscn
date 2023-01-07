@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://art/dialogue_box.png" type="Texture" id=1]
 [ext_resource path="res://art/protagonist_portrait.png" type="Texture" id=2]
@@ -6,11 +6,16 @@
 [ext_resource path="res://art/dialogue_background.png" type="Texture" id=4]
 [ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Dialogue.gd" type="Script" id=6]
+[ext_resource path="res://art/torso_mask.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
 font_data = ExtResource( 5 )
 
 [node name="Dialogue" type="Node2D"]
@@ -21,12 +26,12 @@ position = Vector2( 512, 300 )
 texture = ExtResource( 4 )
 
 [node name="BossPortrait" type="Sprite" parent="."]
-position = Vector2( 369, 260 )
+position = Vector2( 271, 260 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
 [node name="ProtagonistPortrait" type="Sprite" parent="."]
-position = Vector2( 728, 204 )
+position = Vector2( 766, 204 )
 scale = Vector2( 0.328143, 0.328143 )
 texture = ExtResource( 2 )
 
@@ -43,3 +48,19 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "My  boss is a busy lady... She don't have time to find a buncha guys who all look different..."
 autowrap = true
+
+[node name="Continue" type="Label" parent="."]
+margin_left = 718.0
+margin_top = 548.0
+margin_right = 937.0
+margin_bottom = 584.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Left click to continue..."
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 594.312, 4 )
+scale = Vector2( 0.864728, 0.796753 )
+texture = ExtResource( 7 )
+mode = 1
+range_item_cull_mask = 4
