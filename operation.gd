@@ -19,5 +19,6 @@ func _input(event):
 			if Geometry.is_point_in_polygon(target, $TorsoBounds.polygon):
 				$BodyMask.emit_signal('cut', target)
 				get_node("Tool/CPUParticles2D").emitting = true
+				$ProgressBar.value -= 0.0002 * event.speed.length()
 		if event.button_mask == 0:
 			get_node("Tool/CPUParticles2D").emitting = false

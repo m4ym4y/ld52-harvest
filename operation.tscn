@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://art/torso_outside.png" type="Texture" id=1]
 [ext_resource path="res://art/torso_inside.png" type="Texture" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://art/gallbladder.png" type="Texture" id=11]
 [ext_resource path="res://art/heart.png" type="Texture" id=12]
 [ext_resource path="res://art/bladder.png" type="Texture" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.737255, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -79,3 +87,11 @@ scale = Vector2( 0.358153, 0.358152 )
 [node name="TorsoBounds" type="Polygon2D" parent="."]
 color = Color( 1, 1, 0.941176, 0 )
 polygon = PoolVector2Array( 436, 63, 323, 108, 269, 265, 211, 545, 199, 585, 218, 595, 240, 588, 255, 480, 300, 323, 332, 210, 354, 407, 322, 514, 590, 526, 582, 414, 607, 270, 623, 224, 636, 246, 644, 306, 664, 445, 672, 552, 691, 629, 705, 690, 737, 673, 713, 606, 715, 441, 709, 370, 684, 209, 668, 138, 626, 122, 558, 73 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 122.0
+margin_top = 554.0
+margin_right = 820.0
+margin_bottom = 586.0
+custom_styles/fg = SubResource( 1 )
+value = 100.0
