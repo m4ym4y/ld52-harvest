@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://art/scalpel.png" type="Texture" id=1]
+[ext_resource path="res://art/spoon.png" type="Texture" id=2]
+[ext_resource path="res://art/saw.png" type="Texture" id=3]
+[ext_resource path="res://Tool.gd" type="Script" id=4]
+[ext_resource path="res://art/blood.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "saw",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "scalpel",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "spoon",
+"speed": 5.0
+} ]
+
+[node name="Tool" type="AnimatedSprite"]
+position = Vector2( 460, 300.129 )
+scale = Vector2( 0.290323, 0.290322 )
+frames = SubResource( 1 )
+animation = "scalpel"
+script = ExtResource( 4 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( -82.6666, 85.6669 )
+emitting = false
+amount = 200
+lifetime = 0.6
+one_shot = true
+lifetime_randomness = 1.0
+local_coords = false
+texture = ExtResource( 5 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 931.67
+initial_velocity_random = 0.2
+scale_amount = 0.1
+scale_amount_random = 0.2
+color = Color( 0.631373, 0.0588235, 0.0588235, 1 )
