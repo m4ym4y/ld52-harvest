@@ -27,22 +27,30 @@ func _ready():
 			{ "text": "Hello, Regular-Sized Tony. I have a job for you...",
 				"boss": true,
 				"protag": false,
-				"bg": true
+				"bg": true,
+				"letter": false,
+				"alone": false
 			},
 			{ "text": "Oh yeah? Tell me more.",
 				"boss": false,
 				"protag": true,
-				"bg": true
+				"bg": true,
+				"letter": false,
+				"alone": false
 			},
 			{ "text": "s SALDSJ fslkdf jlksfjlkDSJKLF LJSDLFJ",
 				"boss": false,
 				"protag": true,
-				"bg": true
+				"bg": true,
+				"letter": false,
+				"alone": false
 			},
 			{ "text": "SKF JSDKLF JLSDFJLK SD",
 				"boss": true,
 				"protag": false,
-				"bg": true
+				"bg": true,
+				"letter": false,
+				"alone": false
 			},
 		])
 
@@ -72,6 +80,9 @@ func render_current_line():
 	$BossPortrait.light_mask = 1 if line.boss else 4
 	$ProtagonistPortrait.light_mask = 1 if line.protag else 4
 	$DialogueBackground.visible = line.bg
+	$Letter.visible = line.letter
+
+	$BossPortrait.visible = false if line.alone else true
 	
 	if $BossPortrait.light_mask == 1:
 		text_starting_pitch = 1.25

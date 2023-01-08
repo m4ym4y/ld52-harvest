@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://art/kidney.png" type="Texture" id=1]
 [ext_resource path="res://art/gallbladder.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Organ.gd" type="Script" id=7]
 [ext_resource path="res://art/mitochondria.png" type="Texture" id=8]
 [ext_resource path="res://sound/long_squelch.mp3" type="AudioStream" id=9]
+[ext_resource path="res://art/letter.png" type="Texture" id=10]
+[ext_resource path="res://art/question.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,6 +34,11 @@ animations = [ {
 "name": "kidney",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "letter",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "liver",
@@ -40,6 +47,11 @@ animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "mitochondria",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "question",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -52,7 +64,7 @@ animations = [ {
 position = Vector2( 0, -2 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "mitochondria"
+animation = "question"
 script = ExtResource( 7 )
 
 [node name="spleen" type="Polygon2D" parent="."]
@@ -82,6 +94,14 @@ polygon = PoolVector2Array( -190, -213.333, -186.667, -173.333, -163.333, -123.3
 [node name="mitochondria" type="Polygon2D" parent="."]
 color = Color( 0.490196, 0.231373, 0.231373, 0 )
 polygon = PoolVector2Array( 106.667, -243.333, 30, -216.667, -43.3333, -106.667, -163.333, -23.3333, -203.333, 70, -203.333, 150, -156.667, 213.333, -103.333, 240, -43.3333, 233.333, 13.3333, 183.333, 36.6667, 103.333, 66.6667, 50, 96.6667, 13.3333, 143.333, -13.3333, 183.333, -53.3333, 206.667, -116.667, 193.333, -193.333, 140, -236.667 )
+
+[node name="letter" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 83.3333, -126.667, -140, -3.33333, -50, 126.667, 140, 30 )
+
+[node name="question" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( -110, -186.667, -146.667, -120, -33.3333, 213.333, 80, 216.667, 166.667, -130, 90, -236.667, -36.6667, -226.667 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 

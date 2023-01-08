@@ -96,9 +96,13 @@ animation = "spleen"
 
 [node name="Organ7" parent="Organs" instance=ExtResource( 5 )]
 position = Vector2( 411, 161 )
+animation = "mitochondria"
+
+[node name="Organ8" parent="Organs" instance=ExtResource( 5 )]
+position = Vector2( 383, 468 )
 
 [node name="Tool" parent="." instance=ExtResource( 1 )]
-position = Vector2( 550, 226 )
+position = Vector2( 548, 240 )
 scale = Vector2( 0.358153, 0.358152 )
 z_index = 100
 

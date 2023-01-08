@@ -14,7 +14,10 @@ func _ready():
 	pass # Replace with function body.
 
 func init(organ_type):
-	$Organ.animation = organ_type
+	if organ_type == "letter":
+		$Organ.animation = "question"
+	else:
+		$Organ.animation = organ_type
 
 func complete():
 	$GoalCheck.visible = true

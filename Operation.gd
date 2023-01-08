@@ -79,6 +79,8 @@ func fail_stage():
 	yield(get_tree().create_timer(0.5), "timeout")
 	$FailureDialog.visible = true
 
+var last_cut_time = 0
+
 func _input(event):
 	if event is InputEventMouseMotion and not done:
 		if event.button_mask & 1:
@@ -88,7 +90,10 @@ func _input(event):
 				last_mouse_pos = target
 				if distance_since_cut > 10:
 					distance_since_cut = 0
-					$Health.value -= 0.25
+					var time = Time.get_ticks_msec()
+					var time_since_cut = time - last_cut_time
+					last_cut_time	= time
+					$Health.value -= 0.25 if time_since_cut > 50 else 1
 					if $Health.value <= 0:
 						fail_stage()
 					$BodyMask.emit_signal('cut', target)
