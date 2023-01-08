@@ -12,8 +12,14 @@ var elapsed = 0
 var done_typing = false
 export var time_per_char = 0.05
 
+export var text_starting_pitch = 0.75
+export var text_pitch_range = 0.5
+
+var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	if not lines:
 		init([
 			{ "text": "Hello, Regular-Sized Tony. I have a job for you...",
@@ -68,6 +74,8 @@ func _input(event):
 			else:
 				$Label.text = lines[current_line].text
 
+var last_text = ""
+
 func _process(delta):
 	if complete:
 		return
@@ -77,6 +85,10 @@ func _process(delta):
 
 	if text != $Label.text:
 		$Label.text = text.substr(0, min(floor(elapsed / time_per_char),text.length()))
+		if $Label.text != last_text:
+			$TypeSound.pitch_scale = text_starting_pitch + rng.randf() * text_pitch_range
+			$TypeSound.play()
+		last_text = $Label.text
 	else:
 		$Continue.visible = true
 		done_typing = true

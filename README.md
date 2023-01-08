@@ -11,7 +11,7 @@ scored on how little damage you do to the body.
 - [x] Instruction scene and instruction button
 - [x] Game controller to string together scenes
 - [x] Music
-- [ ] Sound effects
+- [x] Sound effects
 - [x] Main menu scene
 - [ ] Operation scene tweaks (damage on extracting organ, animations on tools, health bar tweaks, some stages could start with less than full health?)
 - [ ] Allow organs to overlap each other in the operation scene
