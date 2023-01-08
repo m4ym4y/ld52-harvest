@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/organ-operation.mp3-3da1b7efb2c2e26f21db91775ec9c4e5.mp3str"
+
+[deps]
+
+source_file="res://sound/organ-operation.mp3"
+dest_files=[ "res://.import/organ-operation.mp3-3da1b7efb2c2e26f21db91775ec9c4e5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

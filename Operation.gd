@@ -15,6 +15,9 @@ var did_cut = false
 var done = false
 var failed = false
 
+var last_mouse_pos = Vector2(0,0)
+var distance_since_cut = 99
+
 var goal_organs = []
 var goal_organ_x = 930
 var goal_organ_y = 500
@@ -79,11 +82,15 @@ func _input(event):
 		if event.button_mask & 1:
 			var target = event.position + tool_offset
 			if Geometry.is_point_in_polygon(target, $TorsoBounds.polygon):
-				$BodyMask.emit_signal('cut', target)
-				get_node("Tool/CPUParticles2D").emitting = true
-				$Health.value -= 0.0015 * event.speed.length()
-				if $Health.value == 0:
-					fail_stage()
+				distance_since_cut += (target - last_mouse_pos).length()
+				last_mouse_pos = target
+				if distance_since_cut > 10:
+					distance_since_cut = 0
+					$Health.value -= 0.25
+					if $Health.value <= 0:
+						fail_stage()
+					$BodyMask.emit_signal('cut', target)
+					get_node("Tool/CPUParticles2D").emitting = true
 		elif event.button_mask == 0:
 			get_node("Tool/CPUParticles2D").emitting = false
 	elif event is InputEventMouseButton:
@@ -100,3 +107,7 @@ func _input(event):
 					print('organ: ', organ.animation, ' uncovered: ', uncovered)
 					if uncovered:
 						complete_organ(organ)
+		if event.button_mask & 1 and not done:
+			$Tool.animation = 'scalpel_active'
+		if event.button_mask & 1 == 0:
+			$Tool.animation = 'scalpel'

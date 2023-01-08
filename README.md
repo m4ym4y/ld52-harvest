@@ -7,12 +7,12 @@ scored on how little damage you do to the body.
 
 - [x] Dialogue scene (init with list of dialogue lines and the character/background)
 - [x] Show goal organ in operation scene
-- [ ] Game over logic in the operation scene (retry or main menu)
-- [ ] Instruction scene and instruction button
+- [x] Game over logic in the operation scene (retry or main menu)
+- [x] Instruction scene and instruction button
 - [x] Game controller to string together scenes
-- [ ] Music
+- [x] Music
 - [ ] Sound effects
-- [ ] Main menu scene
+- [x] Main menu scene
 - [ ] Operation scene tweaks (damage on extracting organ, animations on tools, health bar tweaks, some stages could start with less than full health?)
 - [ ] Allow organs to overlap each other in the operation scene
 - [ ] Write dialogue and design levels

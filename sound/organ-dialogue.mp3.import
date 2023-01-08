@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/organ-dialogue.mp3-cc701222d8d836ad6291f2df52bac361.mp3str"
+
+[deps]
+
+source_file="res://sound/organ-dialogue.mp3"
+dest_files=[ "res://.import/organ-dialogue.mp3-cc701222d8d836ad6291f2df52bac361.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

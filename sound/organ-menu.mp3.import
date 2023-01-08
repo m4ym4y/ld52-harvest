@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/organ-menu.mp3-6d17506e57d99348ac639ec534072850.mp3str"
+
+[deps]
+
+source_file="res://sound/organ-menu.mp3"
+dest_files=[ "res://.import/organ-menu.mp3-6d17506e57d99348ac639ec534072850.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

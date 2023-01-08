@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=1]
 [ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://GoalOrganDisplay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://art/complete_dialog.png" type="Texture" id=10]
 [ext_resource path="res://art/failure_dialog.png" type="Texture" id=11]
+[ext_resource path="res://sound/organ-operation.mp3" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -157,3 +158,8 @@ margin_bottom = 35.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Left click to retry..."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -11.0
+autoplay = true
