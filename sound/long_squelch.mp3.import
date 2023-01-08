@@ -11,5 +11,5 @@ dest_files=[ "res://.import/long_squelch.mp3-a898b46b9b7ca1db83c076c26500307f.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

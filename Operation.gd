@@ -34,11 +34,14 @@ func _ready():
 		])
 	pass # Replace with function body.
 
-func init(organ_positions, goals):
+func init(organ_positions, goals, health: int = 100):
 	# clean up example organs
 	for n in $Organs.get_children():
 		$Organs.remove_child(n)
 		n.queue_free()
+
+	print('initializing heath', health)
+	$Health.value = health
 	
 	for o in organ_positions:
 		var organ = organ_scene.instance()
@@ -66,10 +69,9 @@ func complete_organ(organ):
 		goal.complete()
 
 	if goal_organs.size() == 0:
-		print("stage complete!!")
+		yield(get_tree().create_timer(0.5), "timeout")
 		$CompleteDialog.visible = true
 		done = true
-		yield(get_tree().create_timer(1.5), "timeout")
 
 func fail_stage():
 	done = true
@@ -100,16 +102,25 @@ func _input(event):
 			else:
 				emit_signal("failure")
 		if event.button_mask & 2 and not done:
+			var extracted = false
 			var target = event.position + tool_offset
+			$Tool.animation = "spoon"
 			for organ in $Organs.get_children():
 				if organ.in_hitbox(target):
 					var uncovered = $BodyMask.is_uncovered(organ)
 					print('organ: ', organ.animation, ' uncovered: ', uncovered)
 					if uncovered:
+						extracted = true
 						complete_organ(organ)
+			if not extracted:
+				get_node("Tool/CPUParticles2D").emitting = true
+				$ScoopPlayer.play()
+				$Health.value -= 5
+
 		if event.button_mask & 1 and not done:
 			$Tool.animation = 'scalpel_active'
 			$CutPlayer.playing = true
 		if event.button_mask & 1 == 0:
-			$Tool.animation = 'scalpel'
-			$CutPlayer.playing = false
+			if $Tool.animation != "spoon":
+				$Tool.animation = 'scalpel'
+				$CutPlayer.playing = false

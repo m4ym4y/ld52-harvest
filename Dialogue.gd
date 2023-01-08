@@ -10,6 +10,8 @@ var current_line = 0
 var complete = false
 var elapsed = 0
 var done_typing = false
+
+
 export var time_per_char = 0.05
 
 export var text_starting_pitch = 0.75
@@ -44,8 +46,14 @@ func _ready():
 			},
 		])
 
-func init(_lines):
+func init(_lines, distance: float = 1.0):
 	lines = _lines
+	var boss_starting_x = $BossPortrait.position.x
+	var protag_starting_x = $ProtagonistPortrait.position.x
+	var midpoint = (boss_starting_x + protag_starting_x) / 2
+
+	$BossPortrait.position.x += int(float(midpoint - boss_starting_x) * (1.0 - distance))
+	$ProtagonistPortrait.position.x -= int(float(protag_starting_x - midpoint) * (1.0 - distance))
 	render_current_line()
 
 func render_current_line():
@@ -64,6 +72,11 @@ func render_current_line():
 	$BossPortrait.light_mask = 1 if line.boss else 4
 	$ProtagonistPortrait.light_mask = 1 if line.protag else 4
 	$DialogueBackground.visible = line.bg
+	
+	if $BossPortrait.light_mask == 1:
+		text_starting_pitch = 1.25
+	else:
+		text_starting_pitch = 0.75
 
 func _input(event):
 	if event is InputEventMouseButton and not complete:

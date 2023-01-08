@@ -15,8 +15,8 @@ scored on how little damage you do to the body.
 - [x] Main menu scene
 - [ ] Operation scene tweaks (damage on extracting organ, animations on tools, health bar tweaks, some stages could start with less than full health?)
 - [ ] Allow organs to overlap each other in the operation scene
-- [ ] Write dialogue and design levels
-- [ ] Scene at the end of the game
+- [x] Write dialogue and design levels
+- [x] Scene at the end of the game
 
 ## Stretch TODOs
 

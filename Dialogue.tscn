@@ -34,12 +34,12 @@ position = Vector2( 512, 300 )
 texture = ExtResource( 4 )
 
 [node name="BossPortrait" type="Sprite" parent="."]
-position = Vector2( 271, 260 )
+position = Vector2( 200, 260 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
 [node name="ProtagonistPortrait" type="Sprite" parent="."]
-position = Vector2( 766, 204 )
+position = Vector2( 800, 204 )
 scale = Vector2( 0.328143, 0.328143 )
 texture = ExtResource( 2 )
 
