@@ -33,11 +33,13 @@ func _ready():
   image.create(viewport.x, viewport.y, false, Image.FORMAT_RGBA8)
   image.fill_rect(Rect2(Vector2(0, 0), viewport), Color(0, 0, 0, 0))
 
-  brush = Image.new()
-  brush.load("res://art/mask_brush.png")
+  # brush = Image.new()
+  # brush.load("res://art/mask_brush.png")
+  brush = preload("res://art/mask_brush.png").get_data()
 
-  brush_mask = Image.new()
-  brush_mask.load("res://art/mask_brush_mask.png")
+  # brush_mask = Image.new()
+  # brush_mask.load("res://art/mask_brush_mask.png")
+  brush_mask = preload("res://art/mask_brush_mask.png").get_data()
 
   refresh_texture()
 

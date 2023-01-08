@@ -10,7 +10,7 @@ var current_line = 0
 var complete = false
 var elapsed = 0
 var done_typing = false
-var time_per_char = 0.05
+export var time_per_char = 0.05
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -20,6 +20,7 @@ font_data = ExtResource( 5 )
 
 [node name="Dialogue" type="Node2D"]
 script = ExtResource( 6 )
+time_per_char = 0.025
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
