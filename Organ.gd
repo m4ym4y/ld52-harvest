@@ -28,6 +28,7 @@ func in_hitbox(target):
 	return Geometry.is_point_in_polygon((target - position) * (1.0 / scale.x), get_node(animation).polygon)
 
 func fall_out():
+	$ScoopPlayer.play()
 	light_mask = 1
 	z_index = 9
 	falling = true

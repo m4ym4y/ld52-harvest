@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/squelch.mp3-a9163b5dda1da964579f0ccac3325e41.mp3str"
+
+[deps]
+
+source_file="res://sound/squelch.mp3"
+dest_files=[ "res://.import/squelch.mp3-a9163b5dda1da964579f0ccac3325e41.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

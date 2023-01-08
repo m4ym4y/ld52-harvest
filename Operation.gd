@@ -109,5 +109,7 @@ func _input(event):
 						complete_organ(organ)
 		if event.button_mask & 1 and not done:
 			$Tool.animation = 'scalpel_active'
+			$CutPlayer.playing = true
 		if event.button_mask & 1 == 0:
 			$Tool.animation = 'scalpel'
+			$CutPlayer.playing = false
