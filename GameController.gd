@@ -42,8 +42,9 @@ var game_spec = [
 		line_spec("What do you want me to do?", L.PROTAG),
 		line_spec("For this first body, you just need to get the heart out. Boss says she needs a new heart. And don't bang it up or anything.", L.BOSS),
 		line_spec("You got it.", L.PROTAG),
-		line_spec("Use your scalpel (left-click) to cut up the body. Once the required organ is completely uncovered, you can extract it (right-click). Extract all the organs you need, and the level is complete. But be careful; every cut damages the body, and if you cut too much the entire thing is ruined.", L.BLACK)
-		]),
+		line_spec("Use your scalpel (left-click) to cut up the body. Once the required organ is completely uncovered, you can extract it (right-click).", L.BLACK),
+		line_spec("Extract all the organs you need, and the level is complete. But be careful; every cut damages the body, and if you cut too much the entire body is ruined.", L.BLACK)
+	]),
 	operation_spec([
 		organ_spec("heart", 544, 196),
 		organ_spec("liver", 526, 338)
@@ -86,7 +87,7 @@ func next_level():
 	if level.type == "operation":
 		scene = operation_scene.instance()
 		scene.init(level.organs, level.goal_organs)
-		scene.connect("failure", self, "_on_level_failed", [ scene ])
+		scene.connect("failure", self, "_on_level_failure", [ scene ])
 
 	if level.type == "dialogue":
 		scene = dialogue_scene.instance()

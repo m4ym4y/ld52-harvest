@@ -4,6 +4,7 @@ export (PackedScene) var organ_scene
 export (PackedScene) var organ_goal_scene
 
 signal complete
+signal failure
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -80,7 +81,7 @@ func _input(event):
 			if Geometry.is_point_in_polygon(target, $TorsoBounds.polygon):
 				$BodyMask.emit_signal('cut', target)
 				get_node("Tool/CPUParticles2D").emitting = true
-				$Health.value -= 0.004 * event.speed.length()
+				$Health.value -= 0.0015 * event.speed.length()
 				if $Health.value == 0:
 					fail_stage()
 		elif event.button_mask == 0:
@@ -90,7 +91,7 @@ func _input(event):
 			if not failed:
 				emit_signal("complete")
 			else:
-				emit_signal("failed")
+				emit_signal("failure")
 		if event.button_mask & 2 and not done:
 			var target = event.position + tool_offset
 			for organ in $Organs.get_children():
